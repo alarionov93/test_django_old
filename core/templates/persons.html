@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% for p in object_list %}
+		<p><a href="{% url 'person' p.id %}">{{ p.full_name }}</a></p>
+	{% endfor %}
+
+{% endblock %}
