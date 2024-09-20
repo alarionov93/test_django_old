@@ -3,7 +3,7 @@
 {% block content %}
 
 	{% for p in object_list %}
-		<p><a href="{% url 'person' p.id %}">{{ p.full_name }}</a></p>
+		<p><a href="{% url 'person' p.id %}">{{ p.full_name }}</a> <a href="{% url 'person_update' p.id %}">Обновить</a></p>
 	{% endfor %}
 
 {% endblock %}

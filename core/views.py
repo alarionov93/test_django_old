@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from .models import Person
+from django.urls import reverse
 # Create your views here.
 
 
@@ -28,6 +29,17 @@ class PersonDetail(generic.DetailView):
 	context_object_name = 'person'
 	template_name = 'person.html'
 
+
+class PersonUpdate(generic.UpdateView):
+	model = Person
+	context_object_name = 'person'
+	template_name = 'person_update.html'
+	fields = ['name', 'sec_name', 'voice', 'age' ]
+
+	def get_success_url(self):
+		return reverse('person', args=(self.object.id))
+
+	
 	# def get_queryset(self, request, *args, **kwargs):
 	# 	qs = super(PersonsList, self).get_queryset(self.request, *args, **kwargs)
 	# 	qs = qs.get(pk=int(self.kwargs['p_id']))
